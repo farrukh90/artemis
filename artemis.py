@@ -6,7 +6,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Welcome to Artemis E-commerse web application. V2'
+    return render_template('index.html')
+
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+
 
 
 if __name__ == '__main__':
