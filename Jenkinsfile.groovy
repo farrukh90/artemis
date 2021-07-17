@@ -17,7 +17,7 @@ description: 'Which version of the app should I deploy? ',
 name: 'Version'), 
 choice(choices: 
 [
-'174.129.49.128', 
+'34.227.242.48', 
 '35.172.186.162', 
 '34.228.169.242', 
 '18.215.161.218'], 
