@@ -3,7 +3,7 @@ properties(
 [parameters(
 [choice(choices: 
 [
-'0.1', 
+'1.0.0', 
 '0.2', 
 '0.3', 
 '0.4', 
