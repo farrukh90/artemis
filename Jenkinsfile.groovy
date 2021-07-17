@@ -16,7 +16,7 @@ properties(
 description: 'Which version of the app should I deploy? ', 
 name: 'Version'), 
 
-string(defaultValue: '127.0.0.1', 
+string(defaultValue: 'PLEASE_ENTER_IP', 
 		description: 'Which environment should I build the app?', 
 name: 'ENVIR', trim: true)])])
 
