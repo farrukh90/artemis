@@ -15,14 +15,11 @@ properties(
 ], 
 description: 'Which version of the app should I deploy? ', 
 name: 'Version'), 
-choice(choices: 
-[
-'34.227.242.48', 
-'35.172.186.162', 
-'34.228.169.242', 
-'18.215.161.218'], 
-description: 'Please provide an environment to build the application', 
-name: 'ENVIR')])])
+
+string(defaultValue: '127.0.0.1', 
+		description: 'Which environment should I build the app?', 
+name: 'ENVIR', trim: true)])])
+
 stage("Stage1"){
 timestamps {
 ws {
