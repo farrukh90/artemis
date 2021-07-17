@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Welcome to Artemis E-commerse web application. V1'
+    return 'Welcome to Artemis E-commerse web application. <h1>V1</h1>'
 
 
 if __name__ == '__main__':
