@@ -1,4 +1,4 @@
-<img width="1792" alt="main" src="https://github.com/farrukh90/artemis/assets/80778542/8de57be7-b1b2-4d45-8eb0-031c2a9eba3f">
+
 ## This repo is used to deploy helm artemis application
 
 ---
@@ -76,6 +76,5 @@ https://github.com/farrukh90/artemis/tree/master
  ## Output should be like this
  <img width="689" alt="Screenshot 2023-04-01 at 3 17 22 PM" src="https://user-images.githubusercontent.com/80778542/229955711-2ea1ec12-ebcf-4f58-bb1e-edbc0774ea28.png">
  
- <img width="472" alt="Screenshot 2023-04-04 at 8 08 18 PM" src="https://user-images.githubusercontent.com/80778542/229955726-b10d0635-e9c8-4c60-b94b-b76e22e8097b.png">
-
+ <img width="1792" alt="main" src="https://github.com/farrukh90/artemis/assets/80778542/8de57be7-b1b2-4d45-8eb0-031c2a9eba3f">
  
