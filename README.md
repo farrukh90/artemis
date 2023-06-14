@@ -10,7 +10,7 @@ https://github.com/farrukh90/artemis/tree/master
 
  ## 2. Build image following commands
  ```
- * git chekout 2.0.0
+ * git checkout 2.0.0
 
  * docker image build -t "artemis repo from GCP"/artemis:2.0.0 .
 
