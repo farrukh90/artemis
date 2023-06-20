@@ -1,6 +1,6 @@
 env:
   repo:         "https://github.com/farrukh90/artemis.git"
-  app_version:  "9.0.0"
+  app_version:  "2.0.0"
   project_id:   "terraform-project-uckunski"
   repo_region:  "us-central1"
   app_name:     "artemis"
