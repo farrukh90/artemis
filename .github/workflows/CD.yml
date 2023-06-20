@@ -50,8 +50,6 @@ jobs:
 
       - name: Run a one-line script
         run: gcloud version 
-=
-
       - id: 'auth'
         name: 'Authenticate to Google Cloud'
         uses: 'google-github-actions/auth@v0'
