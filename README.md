@@ -59,19 +59,27 @@ cd chart
 ```
 https://github.com/farrukh90/artemis/tree/master
 ```
-## Following this commands 
- ## 1. Clone repo
- ```
- git clone https://github.com/farrukh90/artemis.git
- ```
 
- ## 2. Build image following commands
- ```
- * git chekout 2.0.0
+Pushing a docker image
 
- * docker image build -t "artemis repo from GCP"/artemis:2.0.0 .
+Clone this repo
+git clone https://github.com/farrukh90/artemis.git
 
- * docker push "artemis repo from GCP"/artemis:2.0.0 
+Change the branch to specific version  e.g  2.0.0
+git checkout 2.0.0
+
+Get repo location from Google 
+Google Console >> Search for Artifact registry >> Artemis >> Repo link copy
+
+Build a docker image
+docker image build  -t  us-central1-docker.pkg.dev/terraform-project-382315/artemis/artemis:2.0.0   . 
+
+Authenticate to Registry
+gcloud auth configure-docker us-central1-docker.pkg.dev
+
+Push an image
+docker push us-central1-docker.pkg.dev/terraform-project-382315/artemis/artemis:2.0.0
+
 
  ```
  ## Output should be like this
