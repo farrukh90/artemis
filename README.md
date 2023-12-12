@@ -1,6 +1,6 @@
 
 # Artemis
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+![alt text](https://github.com/farrukh90/artemis/blob/master/images/artemis.png?raw=true)
 
 ---
 ### Usage
