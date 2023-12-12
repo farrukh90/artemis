@@ -85,6 +85,12 @@ helm version
 ```
 helm create application
 ```
+### 4. Update values.yaml file
+```
+image:
+  repository: us-central1-docker.pkg.dev/YOUR_PROJECT/YOUR_REPO/YOUR_APPNAME:YOUR_VERSION
+  tag: "YOUR_VERSION"
+```
 
 ### 4. Install test helm chart
 ```
