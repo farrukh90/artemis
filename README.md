@@ -4,9 +4,6 @@
 
 
 ## Artemis E-commerse Web-Application
-Pre Build process before you deploy the application please open port 5000 on Security Group and then follow the bellow commands.
-Artemis: Revolutionizing Your Shopping Experience
-
 Artemis, a cutting-edge e-commerce application, is poised to redefine the way you shop online. Crafted with Python, Artemis stands out as a sophisticated, user-friendly platform that seamlessly integrates advanced technology with an intuitive interface to offer an unparalleled shopping experience.
 
 Sleek Design & Intuitive Interface:
@@ -43,10 +40,13 @@ Artemis aims to transform the way individuals shop online, offering a secure, co
 
 
 
-
 # Installation
-##### To check if helm is installed in the system please run below commands:
+### Specs: 
+```
+Port: 5000
+```
 
+##### To check if helm is installed in the system please run below commands:
 ```
 helm version
 ```
