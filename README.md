@@ -46,6 +46,31 @@ Artemis aims to transform the way individuals shop online, offering a secure, co
 Port: 5000
 ```
 
+### Release an application
+
+1. Clone a repo
+```
+git clone https://github.com/farrukh90/artemis.git
+```
+
+2. change version
+```
+git checkout  2.0.0 
+```
+3. Build Image locally 
+    docker  build -t us-central1-docker.pkg.dev/terraform-project-382315/artemis/artemis:2.0.0      .                
+4. Authenticate to Registry
+    gcloud auth configure-docker us-central1-docker.pkg.dev                                                                           
+
+5. Push image 
+   docker push us-central1-docker.pkg.dev/terraform-project-382315/artemis/artemis:2.0.0                           
+
+
+
+
+
+
+
 
 # Deploy Process
 ##### To check if helm is installed in the system please run below commands:
