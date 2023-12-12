@@ -2,9 +2,6 @@
 # Artemis
 ![alt text](https://github.com/farrukh90/artemis/blob/master/images/artemis.png?raw=true)
 
----
-### Usage
----
 
 ## Artemis E-commerse Web-Application
 Pre Build process before you deploy the application please open port 5000 on Security Group and then follow the bellow commands.
