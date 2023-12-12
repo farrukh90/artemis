@@ -99,36 +99,3 @@ kubectl get all
 ```
 helm uninstall test
 ```
-
-# This repository contains all the requirements of artemis application. And the application is versioned in branches
-```
-https://github.com/farrukh90/artemis/tree/master
-```
-
-Pushing a docker image
-
-Clone this repo
-git clone https://github.com/farrukh90/artemis.git
-
-Change the branch to specific version  e.g  2.0.0
-git checkout 2.0.0
-
-Get repo location from Google 
-Google Console >> Search for Artifact registry >> Artemis >> Repo link copy
-
-Build a docker image
-docker image build  -t  us-central1-docker.pkg.dev/terraform-project-382315/artemis/artemis:2.0.0   . 
-
-Authenticate to Registry
-gcloud auth configure-docker us-central1-docker.pkg.dev
-
-Push an image
-docker push us-central1-docker.pkg.dev/terraform-project-382315/artemis/artemis:2.0.0
-
-
- ```
- ## Output should be like this
- <img width="689" alt="Screenshot 2023-04-01 at 3 17 22 PM" src="https://user-images.githubusercontent.com/80778542/229955711-2ea1ec12-ebcf-4f58-bb1e-edbc0774ea28.png">
- 
- <img width="1792" alt="main" src="https://github.com/farrukh90/artemis/assets/80778542/8de57be7-b1b2-4d45-8eb0-031c2a9eba3f">
- 
