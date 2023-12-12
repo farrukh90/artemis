@@ -1,5 +1,5 @@
 
-## This repo is used to deploy helm artemis application
+# Artemis
 
 ---
 ### Usage
