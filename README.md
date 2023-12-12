@@ -55,7 +55,7 @@ helm version
 
 ### 3. Create helm chart for application
 ```
-./helm create application
+helm create application
 ```
 
 ### 4. Install test helm chart
