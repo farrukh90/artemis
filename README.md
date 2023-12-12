@@ -60,16 +60,16 @@ helm create application
 
 ### 4. Install test helm chart
 ```
-./helm install test application
+helm install artemis application
 ```
 ### 5. Verify
 ```
- * helm list
- * kubectl get all
+helm list
+kubectl get all
 ```
 ### 6. Uninstall helm chart
 ```
-./helm uninstall test
+helm uninstall test
 ```
 
 # This repository contains all the requirements of artemis application. And the application is versioned in branches
