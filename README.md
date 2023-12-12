@@ -55,7 +55,7 @@ git clone https://github.com/farrukh90/artemis.git
 
 2. change version
 ```
-git checkout  2.0.0 
+git checkout  YOUR_VERSION   (e.g 2.0.0)
 ```
 3. Build Image locally 
 ```
