@@ -44,7 +44,8 @@ Artemis aims to transform the way individuals shop online, offering a secure, co
 
 
 
-## To check if helm is installed in the system please run below commands:
+# Installation
+##### To check if helm is installed in the system please run below commands:
 
 ```
 helm version
