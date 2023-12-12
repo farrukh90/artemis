@@ -59,7 +59,7 @@ git checkout  2.0.0
 ```
 3. Build Image locally 
 ```
-docker  build -t us-central1-docker.pkg.dev/terraform-project-382315/artemis/artemis:2.0.0      .   
+docker  build -t us-central1-docker.pkg.dev/YOUR_PROJECT/YOUR_REPO/YOUR_APPNAME:YOUR_VERSION      .   
 ```            
 4. Authenticate to Registry
 ```
@@ -67,7 +67,7 @@ gcloud auth configure-docker us-central1-docker.pkg.dev
 ```
 5. Push image 
 ```
-docker push us-central1-docker.pkg.dev/terraform-project-382315/artemis/artemis:2.0.0                           
+docker push us-central1-docker.pkg.dev/YOUR_PROJECT/YOUR_REPO/YOUR_APPNAME:YOUR_VERSION                           
 ```
 
 
