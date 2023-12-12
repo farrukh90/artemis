@@ -40,32 +40,17 @@ Artemis aims to transform the way individuals shop online, offering a secure, co
 
 
 
-# Installation
+# Build Process
 ### Specs: 
 ```
 Port: 5000
 ```
 
+
+# Deploy Process
 ##### To check if helm is installed in the system please run below commands:
 ```
 helm version
-```
-
-## If above command responds with an error output, please follow the instructions listed below
-
-
-### 1. Read helm compatibility 
-```
-https://helm.sh/docs/topics/version_skew/
-```
-
-### 2. Install helm to your repository
-```
-wget https://get.helm.sh/helm-v3.7.2-linux-amd64.tar.gz
-tar xzvf helm-v3.7.2-linux-amd64.tar.gz
-rm -rf helm-v3.7.2-linux-amd64.tar.gz
-mv linux-amd64/helm charts/
-cd chart
 ```
 
 ### 3. Create helm chart for application
