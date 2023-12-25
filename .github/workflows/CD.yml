@@ -1,45 +1,31 @@
 env:
   repo:         "https://github.com/farrukh90/artemis.git"
-  app_version:  "2.0.0"
-  project_id:   "csubrsnzorjkvdca"
+  app_version:  "3.0.0"
+  project_id:   "terraform-project-uckunski"
   repo_region:  "us-central1"
   app_name:     "artemis"
 
 
 
 name: ContinuousDelivery
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-
-      # Runs a set of commands using the runners shell
       - name: Clone a repo
         run: |
           git clone ${{ env.repo }}
 
 
-      # Runs a set of commands using the runners shell
       - name: Switch Branches
         working-directory: ${{ env.app_name }}
         run: |
@@ -48,30 +34,28 @@ jobs:
 
 
 
-      # Runs a set of commands using the runners shell
       - name: Build Image
         working-directory: ${{ env.app_name }}
         run: |
           docker build -t ${{ env.app_name }}:${{ env.app_version }}   . 
 
 
-      # Runs a set of commands using the runners shell
+
       - name: Tag Image
         working-directory: ${{ env.app_name }}
         run: |
           docker image tag ${{ env.app_name }}:${{ env.app_version }} ${{ env.repo_region }}-docker.pkg.dev/${{ env.project_id }}/${{ env.app_name }}/${{ env.app_name }}:${{ env.app_version }}     
 
 
-      # Runs a single command using the runners shell
+
       - name: Run a one-line script
         run: gcloud version 
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.SERVICE_ACCOUNT }}'
 
-
-
-      - name: Authenticate to Google account
-        run: |
-          gcloud auth activate-service-account --key-file="service-account.json"
-          gcloud config set project ${{ env.project_id }}
 
 
 
@@ -79,12 +63,10 @@ jobs:
         run: |
           gcloud auth configure-docker  ${{ env.repo_region }}-docker.pkg.dev
 
-          
-
+        
 
       # Runs a set of commands using the runners shell
       - name: Image push
         working-directory: ${{ env.app_name }}
         run: |
           docker push ${{ env.repo_region }}-docker.pkg.dev/${{ env.project_id }}/${{ env.app_name }}/${{ env.app_name }}:${{ env.app_version }}  
-
