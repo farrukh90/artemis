@@ -1,17 +1,16 @@
-## Based image
-FROM python:3
+# Artemis v1 — a clean, minimal image.
+# Pin a small, specific base (not the huge, unpinned `python:3`).
+FROM python:3.12-slim
 
-## Copy from root folder to artemis folder inside docker image
-COPY . /artemis
-
-## Expose 5000 port
-EXPOSE 5000
-
-## Install all packages
-RUN pip install Flask
-
-## Change dir
+# Work inside a dedicated directory.
 WORKDIR /artemis
 
-## Run the application
-CMD python artemis.py
+# Copy the app and install its one dependency.
+COPY . .
+RUN pip install Flask
+
+# Flask listens on 5000.
+EXPOSE 5000
+
+# Exec-form CMD so signals reach the app.
+CMD ["python", "artemis.py"]
