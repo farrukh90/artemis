@@ -1,17 +1,12 @@
-## Based image
-FROM python:3
+# Artemis v2 — keep junk out of the image and skip the pip cache.
+# See .dockerignore: .git, images and caches never enter the build context.
+FROM python:3.12-slim
 
-## Copy from root folder to artemis folder inside docker image
-COPY . /artemis
-
-## Expose 5000 port
-EXPOSE 5000
-
-## Install all packages
-RUN pip install Flask
-
-## Change dir
 WORKDIR /artemis
 
-## Run the application
-CMD python artemis.py
+COPY . .
+RUN pip install --no-cache-dir Flask
+
+EXPOSE 5000
+
+CMD ["python", "artemis.py"]
