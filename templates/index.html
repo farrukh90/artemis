@@ -1,31 +1,85 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <link rel="stylesheet" href="/static/index.css">
-    <link rel="stylesheet" href="/static/main/topnav.css">
-    <meta charset="utf-8">
-    <title></title>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artemis — Objects for the Modern Ritual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="/"><span class="moon"></span> Artemis</a>
+      <a class="link" href="#shop">Shop</a>
+      <a class="link" href="#collections">Collections</a>
+      <a class="link" href="#about">About</a>
+      <span class="spacer"></span>
+      <a class="link" href="{{ url_for('login') }}">Login</a>
+      <a class="cart" href="#">Cart · <span id="count">0</span></a>
+    </div>
+  </nav>
 
-  </head>
-
-  <body>
-  <!-- starting nav bar -->
-
-      <div class="topnav">
-        <a class="active" href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">New Moon Collection · 2026</div>
+      <h1>Objects worthy of <em>the hunt.</em></h1>
+      <p>Artemis curates a considered catalogue of design pieces — lit by moonlight, built to last. Shop the pieces our community is chasing this season.</p>
+      <div class="cta">
+        <a class="btn gold" href="#shop">Explore the collection →</a>
+        <a class="btn ghost" href="{{ url_for('signup') }}">Create account</a>
       </div>
+    </div>
+    <div class="orb"></div>
+  </header>
 
-      <div style="padding-left:16px">
-        <h2>Top Navigation Example</h2>
-        <p>Some content..</p>
+  <section class="section" id="collections">
+    <div class="wrap">
+      <h2>Shop by constellation</h2>
+      <p class="sub">Four curated worlds. One aesthetic.</p>
+      <div class="tiles">
+        <div class="tile reveal" style="animation-delay:.05s"><div class="k">01</div><h3>Lumen · Lighting</h3></div>
+        <div class="tile reveal" style="animation-delay:.12s"><div class="k">02</div><h3>Terra · Home</h3></div>
+        <div class="tile reveal" style="animation-delay:.19s"><div class="k">03</div><h3>Aura · Wear</h3></div>
+        <div class="tile reveal" style="animation-delay:.26s"><div class="k">04</div><h3>Nova · Tech</h3></div>
       </div>
-  <!-- end nav bar -->
+    </div>
+  </section>
 
-      <a  href="{{ url_for('signup') }}"><button type="submit" class="signupbtn">Sign Up</button></a>
-       <h1>Welcome to Artemis E-commerse web application. V8 </h1>
+  <section class="section" id="shop">
+    <div class="wrap">
+      <h2>Featured this cycle</h2>
+      <p class="sub">Hand-picked by the Artemis studio.</p>
+      <div class="grid">
+        <div class="card reveal" style="animation-delay:.05s">
+          <div class="ph">🌙</div>
+          <div class="body"><div class="name">Crescent Lamp</div>
+          <div class="row"><span class="price">$189</span></div></div>
+        </div>
+        <div class="card reveal" style="animation-delay:.11s">
+          <div class="ph">🏺</div>
+          <div class="body"><div class="name">Obsidian Vase</div>
+          <div class="row"><span class="price">$74</span></div></div>
+        </div>
+        <div class="card reveal" style="animation-delay:.17s">
+          <div class="ph">🪞</div>
+          <div class="body"><div class="name">Halo Mirror</div>
+          <div class="row"><span class="price">$240</span></div></div>
+        </div>
+        <div class="card reveal" style="animation-delay:.23s">
+          <div class="ph">⌚</div>
+          <div class="body"><div class="name">Ora Timepiece</div>
+          <div class="row"><span class="price">$320</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  </body>
+  <footer id="about"><div class="wrap">
+    <div><span class="brand" style="font-size:1.2rem">Artemis</span><br>Objects for the modern ritual.</div>
+    <div>© 2026 Artemis Studio · Crafted under the moon.</div>
+  </div></footer>
+</body>
 </html>
