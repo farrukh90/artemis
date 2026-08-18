@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Artemis — Create account</title>
+  <title>Artemis — Login</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
@@ -18,13 +18,12 @@
 
   <main class="auth-wrap">
     <form class="auth" action="#" method="post">
-      <h2>Create account</h2>
-      <p class="sub">Join the crescent list.</p>
-      <label>Name<input type="text" name="name" placeholder="Diana Moon"></label>
+      <h2>Welcome back</h2>
+      <p class="sub">Return to the hunt.</p>
       <label>Email<input type="email" name="email" placeholder="you@artemis.co"></label>
       <label>Password<input type="password" name="password" placeholder="••••••••"></label>
-      <button class="btn gold" type="submit">Create account</button>
-      <p class="alt">Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+      <button class="btn gold" type="submit">Login</button>
+      <p class="alt">New to Artemis? <a href="{{ url_for('signup') }}">Create account</a></p>
     </form>
   </main>
 </body>
