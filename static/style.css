@@ -1,0 +1,46 @@
+body{
+  margin:0; background:#0b0d12; color:#e8ecf4;
+  font-family:"Archivo",system-ui,sans-serif; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,.brand{font-family:"Fraunces",Georgia,serif; font-weight:600; letter-spacing:-.01em}
+a{color:inherit; text-decoration:none}
+.wrap{max-width:1200px; margin:0 auto; padding:0 28px}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:50;
+  background:rgba(11,13,18,.85); border-bottom:1px solid rgba(230,181,102,.18)}
+.nav .wrap{display:flex; align-items:center; gap:32px; height:72px}
+.brand{font-size:1.5rem; display:flex; align-items:center; gap:.55rem; color:#f3d9a6}
+.brand .moon{width:22px;height:22px;border-radius:50%;
+  box-shadow:inset -7px -3px 0 0 #e6b566; background:transparent}
+.nav a.link{color:#9aa3b5; font-size:.9rem; letter-spacing:.04em; text-transform:uppercase;
+  transition:color .25s}
+.nav a.link:hover{color:#f3d9a6}
+
+/* hero */
+.hero{padding:120px 0 90px}
+.hero .eyebrow{color:#e6b566; letter-spacing:.35em; text-transform:uppercase; font-size:.72rem;
+  margin-bottom:26px}
+.hero h1{font-size:clamp(2.8rem,7vw,5.4rem); line-height:1.02; margin:0 0 24px; max-width:14ch; color:#e8ecf4}
+.hero h1 em{font-style:italic; color:#f3d9a6}
+.hero p{max-width:46ch; color:#9aa3b5; font-size:1.05rem}
+.hero .cta{margin-top:38px; display:flex; gap:16px}
+.btn{display:inline-flex; align-items:center; gap:.5rem; padding:.9rem 1.6rem; border-radius:999px;
+  font-weight:600; font-size:.95rem; cursor:pointer; border:1px solid rgba(230,181,102,.18); transition:.25s}
+.btn.gold{background:linear-gradient(135deg,#e6b566,#f3d9a6); color:#2a1e08; border:none}
+.btn.gold:hover{transform:translateY(-2px)}
+
+/* auth */
+.auth-wrap{display:flex; justify-content:center; padding:80px 28px}
+.auth{width:100%; max-width:400px; background:#151925; border:1px solid rgba(230,181,102,.18);
+  border-radius:20px; padding:40px}
+.auth h2{font-size:1.8rem; margin:0 0 6px}
+.auth .sub{color:#9aa3b5; margin:0 0 26px}
+.auth label{display:block; font-size:.8rem; letter-spacing:.04em; text-transform:uppercase;
+  color:#9aa3b5; margin-bottom:16px}
+.auth input{display:block; width:100%; margin-top:8px; padding:.8rem 1rem; border-radius:12px;
+  background:#0b0d12; border:1px solid rgba(230,181,102,.18); color:#e8ecf4; font-family:inherit;
+  font-size:.95rem}
+.auth input:focus{outline:none; border-color:#e6b566}
+.auth .btn{width:100%; justify-content:center; margin-top:10px}
