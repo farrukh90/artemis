@@ -1,0 +1,11 @@
+body{
+  margin:0; background:#0b0d12; color:#e8ecf4;
+  font-family:"Archivo",system-ui,sans-serif; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+h1{font-family:"Fraunces",Georgia,serif; font-weight:600; letter-spacing:-.01em}
+.wrap{max-width:1200px; margin:0 auto; padding:0 28px}
+
+.hero{padding:160px 0; text-align:center}
+.hero h1{font-size:clamp(2.8rem,7vw,5.4rem); line-height:1.02; margin:0 0 24px; color:#f3d9a6}
+.hero p{max-width:46ch; margin:0 auto; color:#9aa3b5; font-size:1.05rem}
