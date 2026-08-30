@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Artemis — Login</title>
+  <title>Artemis — Checkout</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
@@ -17,15 +17,21 @@
   </nav>
 
   <main class="auth-wrap">
-    <form class="auth" action="{{ url_for('login') }}" method="post">
-      <h2>Welcome back</h2>
-      <p class="sub">Return to the hunt.</p>
+    {% if ordered %}
+    <div class="auth">
+      <h2>Order placed</h2>
+      <p class="sub">Your pieces are on their way by moonlight.</p>
+      <a class="btn gold" href="{{ url_for('index') }}">Back to shop</a>
+    </div>
+    {% else %}
+    <form class="auth" action="{{ url_for('checkout') }}" method="post">
+      <h2>Checkout</h2>
+      <p class="sub">Enter payment to place your order.</p>
       {% if error %}<p class="err">{{ error }}</p>{% endif %}
-      <label>Email<input type="email" name="email" placeholder="you@artemis.co"></label>
-      <label>Password<input type="password" name="password" placeholder="••••••••"></label>
-      <button class="btn gold" type="submit">Login</button>
-      <p class="alt">New to Artemis? <a href="{{ url_for('signup') }}">Create account</a></p>
+      <label>Card number<input type="text" name="card" placeholder="4111 1111 1111 1111"></label>
+      <button class="btn gold" type="submit">Pay now</button>
     </form>
+    {% endif %}
   </main>
 </body>
 </html>

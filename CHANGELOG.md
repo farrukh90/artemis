@@ -2,11 +2,18 @@
 
 All notable changes to **Artemis** are recorded here. This repository teaches how a
 container image *and* the app it ships evolve from a naive first cut to a
-production-grade build. Each version lives on its own git branch (`1.0.0` … `10.0.0`);
-this file, on branch `10.0.0`, covers `1.0.0` through `10.0.0`.
+production-grade build. Each version lives on its own git branch (`1.0.0` … `11.0.0`);
+this file, on branch `11.0.0`, covers `1.0.0` through `11.0.0`.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/). Every entry lists
 what changed in the **Docker** image and in the **Storefront** for that version.
+
+
+## [11.0.0] - 2026-08-30
+
+**Observability:** Instrument the Flask app with `prometheus_client` and expose `/metrics`. Six metrics: `http_requests_total` and `http_request_duration_seconds` (every request, via `before_request`/`after_request` hooks), plus `active_users`, `orders_total`, `login_failures_total`, and `payment_failures_total` driven by real login/logout/checkout routes. Password `moon` logs in; card `4000000000000002` is declined.
+
+**Docker:** Inherits v10's multi-stage, non-root, digest-pinned build; runs gunicorn with a single worker so the in-process counters stay consistent.
 
 
 ## [10.0.0] - 2026-08-17
