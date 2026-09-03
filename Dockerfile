@@ -36,4 +36,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
   CMD python -c "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:5000/',timeout=2).status==200 else 1)"
 
 # 1 worker keeps the in-process Prometheus counters consistent (multi-worker needs PROMETHEUS_MULTIPROC_DIR).
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "1", "artemis:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "1", "--access-logfile", "-", "--error-logfile", "-", "artemis:app"]
