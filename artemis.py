@@ -1,4 +1,6 @@
+import logging
 import os
+import sys
 import time
 
 from flask import (
@@ -7,6 +9,18 @@ from flask import (
 from prometheus_client import (
     Counter, Gauge, Histogram, generate_latest, CONTENT_TYPE_LATEST,
 )
+
+# ── Logging ─────────────────────────────────────────────────────────
+# Log to STDOUT (never to a file): in a container the runtime — `docker logs`,
+# Kubernetes, a log shipper — captures the process's stdout. LOG_LEVEL is env
+# driven so you can turn up detail without a rebuild. PYTHONUNBUFFERED=1 in the
+# Dockerfile makes these lines flush immediately instead of sitting in a buffer.
+logging.basicConfig(
+    level=os.environ.get("LOG_LEVEL", "INFO").upper(),
+    format="%(asctime)s %(levelname)s [%(name)s] %(message)s",
+    stream=sys.stdout,
+)
+log = logging.getLogger("artemis")
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("ARTEMIS_SECRET_KEY", "artemis-demo-not-a-real-secret")
@@ -55,6 +69,10 @@ def _record_request(response):
         elapsed = time.perf_counter() - getattr(request, "_start", time.perf_counter())
         http_request_duration_seconds.labels(request.method, endpoint).observe(elapsed)
         http_requests_total.labels(request.method, endpoint, response.status_code).inc()
+        # One access line per request (skip /metrics so Prometheus scrapes don't
+        # flood the log). Latency in ms makes slow requests obvious at a glance.
+        log.info("%s %s -> %s in %.1fms",
+                 request.method, request.path, response.status_code, elapsed * 1000)
     return response
 
 
@@ -71,30 +89,39 @@ def signup():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
+        email = request.form.get("email", "guest")
         if request.form.get("password") == DEMO_PASSWORD:
             if "user" not in session:
                 _set_active(+1)
-            session["user"] = request.form.get("email", "guest")
+            session["user"] = email
+            log.info("login success: user=%s", email)
             return redirect(url_for("index"))
         login_failures_total.inc()
+        log.warning("login failed: bad password for user=%s", email)
         return render_template("login.html", error="Invalid credentials."), 401
     return render_template("login.html")
 
 
 @app.route("/logout")
 def logout():
-    if session.pop("user", None) is not None:
+    user = session.pop("user", None)
+    if user is not None:
         _set_active(-1)
+        log.info("logout: user=%s", user)
     return redirect(url_for("index"))
 
 
 @app.route("/checkout", methods=["GET", "POST"])
 def checkout():
     if request.method == "POST":
-        if request.form.get("card", "").replace(" ", "") == DECLINE_CARD:
+        card = request.form.get("card", "").replace(" ", "")
+        if card == DECLINE_CARD:
             payment_failures_total.inc()
+            # Never log a full card number — last 4 digits only.
+            log.warning("payment declined: card ending %s", card[-4:])
             return render_template("checkout.html", error="Payment declined."), 402
         orders_total.inc()
+        log.info("order placed")
         return render_template("checkout.html", ordered=True)
     return render_template("checkout.html")
 
@@ -102,6 +129,9 @@ def checkout():
 @app.route("/metrics")
 def metrics():
     return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)
+
+
+log.info("Artemis 11.0.0 ready (log level %s)", logging.getLevelName(log.getEffectiveLevel()))
 
 
 if __name__ == "__main__":
