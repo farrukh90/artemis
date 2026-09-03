@@ -3,10 +3,17 @@
 All notable changes to **Artemis** are recorded here. This repository teaches how a
 container image *and* the app it ships evolve from a naive first cut to a
 production-grade build. Each version lives on its own git branch (`1.0.0` … `11.0.0`);
-this file, on branch `11.0.0`, covers `1.0.0` through `11.0.0`.
+this file, on branch `12.0.0`, covers `1.0.0` through `12.0.0`.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/). Every entry lists
 what changed in the **Docker** image and in the **Storefront** for that version.
+
+
+## [12.0.0] - 2026-09-03
+
+**Observability:** Add application logging. The app logs to **stdout** (never a file, so the container runtime captures it) with a timestamped, levelled format and an env-driven `LOG_LEVEL`. Every request gets one access line (method, path, status, latency in ms; `/metrics` scrapes excluded to keep the log clean), and the login/logout/checkout routes log business events — successful and failed logins, orders, and declined payments (last 4 card digits only, never the full number).
+
+**Docker:** Run gunicorn with `--access-logfile -` and `--error-logfile -` so its request and error logs stream to stdout alongside the app's own logs; `PYTHONUNBUFFERED=1` (from v4) makes every line flush immediately.
 
 
 ## [11.0.0] - 2026-08-30

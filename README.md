@@ -65,4 +65,39 @@ else succeeds.
 > per process, so multiple workers would each report their own numbers. Scaling out needs
 > `PROMETHEUS_MULTIPROC_DIR` — a good follow-up exercise for the class.
 
- 
+---
+
+## Logging (v12.0.0)
+
+Version `12.0.0` is v11 plus application logging. The app logs to **stdout** (the
+container runtime — `docker logs`, Kubernetes, a log shipper — captures it), so there
+are no log files to manage.
+
+### Run it and watch the logs
+```
+docker build -t artemis:12.0.0 .
+docker run -p 8000:5000 artemis:12.0.0     # NOT 5000 on macOS — AirPlay uses it
+# in another terminal:
+docker logs -f <container>                 # or just watch the `docker run` output
+```
+
+### What gets logged
+| Event | Level | Example |
+| --- | --- | --- |
+| Every request (except `/metrics`) | INFO | `GET /login -> 200 in 3.4ms` |
+| Successful login | INFO | `login success: user=a@b.co` |
+| Failed login | WARNING | `login failed: bad password for user=a@b.co` |
+| Logout | INFO | `logout: user=a@b.co` |
+| Order placed | INFO | `order placed` |
+| Declined payment | WARNING | `payment declined: card ending 0002` |
+
+Gunicorn's own access and error logs also go to stdout (`--access-logfile -`,
+`--error-logfile -`), so you see both the server and the app in one stream.
+
+### Turn the detail up or down
+```
+docker run -p 8000:5000 -e LOG_LEVEL=DEBUG artemis:12.0.0
+```
+`LOG_LEVEL` defaults to `INFO`. Card numbers are never logged in full — only the last
+four digits — a deliberate example of not writing secrets to logs.
+
